@@ -1,0 +1,128 @@
+<html>
+	<head>
+		
+		<link rel="stylesheet" type="text/css" href="http://local.blueprintgame.com:8888/css/bootstrap.css" />
+		<script src="http://local.blueprintgame.com:8888/js/libs/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./lib/map.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./lib/map.tools.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./lib/map.draw.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./lib/map.data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./lib/map.init.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./lib/map.ui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./lib/map.panel.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+			Map.init('#mapper');
+			Map.mock();
+		</script>
+		
+		<style type="text/css" media="screen">
+			body{padding:0;margin:0;}
+			#mapper-canvas{width:100%;height:100%;position:absolute;}/* border:1px solid #333;*/
+			#mapper-wrap #save-map{height:18px;}
+			#mapper-wrap .panel{position:absolute;}
+			#mpanel-tools a.btn{margin-bottom:5px;}
+			#mpanel-tools span{display:none;}
+			#mpanel-blocks{padding:4px;width:80px;}
+			#mpanel-blocks a{display:inline-block;margin:3px;}
+			#mpanel-blocks a img{display:block;margin:0;padding:0;}
+			#mpanel-blocks a.active{border:2px solid #4E97C5;margin:1px;background:#4E97C5;}
+			
+			#swatch-content{background:#CCC;float:left;width:80px;height:150px;}
+			#swatch-tabs{float:left;}
+			
+			#mpanel-layers{width:90px;}
+			#mpanel-layers input{float:left;margin-right:10px;}
+			
+		</style>
+		
+	</head>
+	<body>
+		<div id="mapper">
+			<!--
+			<h1>Mapper Stuff</h1>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+			<p>amdklsadklasdklmasklmdklmdkm</p>
+-->
+			<div id="mapper-wrap">
+				<canvas id="mapper-canvas"></canvas>
+				<a id="save-map" class="btn btn-success">Save Changes</a>
+				<div id="mpanel-layers" class="panel">
+					<div><input type="checkbox" name="blocks" checked="checked" /><label>Blocks</label></div>
+					<div><input type="checkbox" name="walls" checked="checked" /><label>Walls</label></div>
+					<div><input type="checkbox" name="liquids" checked="checked" /><label>Liquids</label></div>
+					<div><input type="checkbox" name="npcs" checked="checked" /><label>Npcs</label></div>
+					<div><input type="checkbox" name="entities" checked="checked" /><label>Entities</label></div>
+				</div>
+				<div id="mpanel-tools" class="panel">
+					<a onClick="Map.zoom(-2);return false;" href="#" class="btn"><i class="icon-zoom-out"></i></a>
+					<a onClick="Map.zoom(2);return false;" href="#" class="btn"><i class="icon-zoom-in"></i></a><br />
+			
+					<a id="mtool-Move" onClick="Map.Tools.use('Move');" class="btn btn-small btn-primary"><i class="icon-move icon-white"></i> <span>Move (V)</span></a><br />
+					<a id="mtool-Draw" onClick="Map.Tools.use('Draw');" class="btn btn-small"><i class="icon-pencil"></i> <span>Draw (B)</span></a><br />
+					<a id="mtool-Rectangle" onClick="Map.Tools.use('Rectangle');" class="btn btn-small"><i class="icon-th-large"></i> <span>Rectangle (U)</span></a><br />
+					<a id="mtool-Spawn" onClick="Map.Tools.use('Spawn');" class="btn btn-small"><i class="icon-home"></i> <span>Spawn (S)</span></a><br />
+				</div>
+				<div id="mpanel-swatch" class="panel">
+
+					<div id="swatch-content">
+						<div id="swatch-blocks">blocks</div>
+						<div id="swatch-walls">walls</div>
+						<div id="swatch-liquids">Liquids</div>
+						<div id="swatch-npcs">npcs</div>
+						<div id="swatch-entities">entities</div>
+					</div>
+					<div id="swatch-tabs">
+						<a class="btn" href="#swatch-blocks">blocks</a><br />
+						<a class="btn" href="#swatch-walls">walls</a><br />
+						<a class="btn" href="#swatch-liquids">liquids</a><br />
+						<a class="btn" href="#swatch-npcs">npcs</a><br />
+						<a class="btn" href="#swatch-entities">entities</a><br />
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
