@@ -17,79 +17,58 @@
 		</script>
 		
 		<style type="text/css" media="screen">
+		
+			/* Testing Specific, Don't copy */
 			body{padding:0;margin:0;}
-			#mapper-canvas{width:100%;height:100%;position:absolute;}/* border:1px solid #333;*/
+			#mapper-canvas{width:900px;height:500px;}
+			
+			/* Global */
+			#mapper-wrap #mapper-canvas{position:absolute;border:1px solid #333;}
 			#mapper-wrap #save-map{height:18px;}
 			#mapper-wrap .panel{position:absolute;}
-			#mpanel-tools a.btn{margin-bottom:5px;}
-			#mpanel-tools span{display:none;}
-			#mpanel-blocks{padding:4px;width:80px;}
-			#mpanel-blocks a{display:inline-block;margin:3px;}
-			#mpanel-blocks a img{display:block;margin:0;padding:0;}
-			#mpanel-blocks a.active{border:2px solid #4E97C5;margin:1px;background:#4E97C5;}
+			#mapper-wrap a.btn{height:16px;}
+			#mapper-wrap a.btn i{vertical-align:top;margin-top:1px;}
+			#mapper-wrap .help{display:none;}
 			
-			#swatch-content{background:#CCC;float:left;width:80px;height:150px;}
-			#swatch-tabs{float:left;}
+			/* Tools */
+			#mapper-wrap #mpanel-tools a.btn{margin-bottom:5px;}
+			#mapper-warp #mpanel-tools span{display:none;}
 			
+			/* Swatch */
+			#mpanel-swatch #swatch-content{float:left;width:140px;height:240px;border-radius:3px;padding:10px;opacity:0.4;cursor:normal !important;resize: both;}
+			#mpanel-swatch:hover #swatch-content{opacity:1;background:rgba(20,20,20,0.9);border:1px solid #888;padding:9px;}
+			#mpanel-swatch #swatch-content a{margin-right:10px;}
+			#mpanel-swatch #swatch-content a.active img{background:#0074CC;border:2px solid red;}
+			#mpanel-swatch #swatch-content img{background:#999;border:2px solid #999;}
+			#mpanel-swatch #swatch-tabs{float:left;}
+			#mpanel-swatch #swatch-tabs a{text-align:left;margin:0 5px 5px 0;}
+			
+			/* Layers */
 			#mpanel-layers{width:90px;}
 			#mpanel-layers input{float:left;margin-right:10px;}
+			
+			/* Fullscreen */
+			.mapper-fullscreen #mapper-canvas{top:0;left:0;position:fixed !important;border:none !important;}
+			.mapper-fullscreen #mpanel-swatch{height:210px;width:200px;}
+			.mapper-fullscreen #mpanel-tools{height:160px;width:76px;}
+			.mapper-fullscreen #mpanel-layers{height:120px;}
+			.mapper-fullscreen.mapper-help #mpanel-tools{width:170px;}
+			.mapper-fullscreen.mapper-help #mpanel-swatch{width:240px;}
 			
 		</style>
 		
 	</head>
 	<body>
 		<div id="mapper">
-			<!--
-			<h1>Mapper Stuff</h1>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
-			<p>amdklsadklasdklmasklmdklmdkm</p>
--->
+
 			<div id="mapper-wrap">
 				<canvas id="mapper-canvas"></canvas>
 				<a id="save-map" class="btn btn-success">Save Changes</a>
-				<div id="mpanel-layers" class="panel">
+				<div id="mpanel-layers-toggle" class="panel">
+					<a id="toggle-fullscreen" class="btn btn-mini" href="#"><i class="icon-fullscreen"></i> <span class="help">Fullscreen</span></a>
+					<a id="toggle-layers" class="btn btn-mini" href="#"><i class="icon-filter"></i> <span class="help">Filters</span></a>
+				</div>
+				<div id="mpanel-layers" style="display:none;" class="panel">
 					<div><input type="checkbox" name="blocks" checked="checked" /><label>Blocks</label></div>
 					<div><input type="checkbox" name="walls" checked="checked" /><label>Walls</label></div>
 					<div><input type="checkbox" name="liquids" checked="checked" /><label>Liquids</label></div>
@@ -97,29 +76,29 @@
 					<div><input type="checkbox" name="entities" checked="checked" /><label>Entities</label></div>
 				</div>
 				<div id="mpanel-tools" class="panel">
-					<a onClick="Map.zoom(-2);return false;" href="#" class="btn"><i class="icon-zoom-out"></i></a>
-					<a onClick="Map.zoom(2);return false;" href="#" class="btn"><i class="icon-zoom-in"></i></a><br />
+					<a onClick="Map.zoom(2);return false;" href="#" class="btn btn-small"><i class="icon-zoom-in"></i> <span class="help">Zoom In</span></a>
+					<a onClick="Map.zoom(-2);return false;" href="#" class="btn btn-small"><i class="icon-zoom-out"></i> <span class="help">Zoom Out</span></a><br >
 			
-					<a id="mtool-Move" onClick="Map.Tools.use('Move');" class="btn btn-small btn-primary"><i class="icon-move icon-white"></i> <span>Move (V)</span></a><br />
-					<a id="mtool-Draw" onClick="Map.Tools.use('Draw');" class="btn btn-small"><i class="icon-pencil"></i> <span>Draw (B)</span></a><br />
-					<a id="mtool-Rectangle" onClick="Map.Tools.use('Rectangle');" class="btn btn-small"><i class="icon-th-large"></i> <span>Rectangle (U)</span></a><br />
-					<a id="mtool-Spawn" onClick="Map.Tools.use('Spawn');" class="btn btn-small"><i class="icon-home"></i> <span>Spawn (S)</span></a><br />
+					<a id="mtool-Move" onClick="Map.Tools.use('Move');" class="btn btn-small btn-primary"><i class="icon-move icon-white"></i> <span class="help">Move (V)</span></a><br />
+					<a id="mtool-Draw" onClick="Map.Tools.use('Draw');" class="btn btn-small"><i class="icon-pencil"></i> <span class="help">Draw (B)</span></a>
+					<a id="mtool-Erase" class="btn btn-small"><i class="icon-remove"></i> <span class="help">Eraser (E)</span></a><br />
+					<a id="mtool-Rectangle" onClick="Map.Tools.use('Rectangle');" class="btn btn-small"><i class="icon-th-large"></i> <span class="help">Rectangle (N)</span></a><br />
+					<a id="mtool-Spawn" onClick="Map.Tools.use('Spawn');" class="btn btn-small"><i class="icon-home"></i> <span class="help">Spawn (S)</span></a><br />
 				</div>
 				<div id="mpanel-swatch" class="panel">
-
-					<div id="swatch-content">
-						<div id="swatch-blocks">blocks</div>
-						<div id="swatch-walls">walls</div>
-						<div id="swatch-liquids">Liquids</div>
-						<div id="swatch-npcs">npcs</div>
-						<div id="swatch-entities">entities</div>
-					</div>
 					<div id="swatch-tabs">
-						<a class="btn" href="#swatch-blocks">blocks</a><br />
-						<a class="btn" href="#swatch-walls">walls</a><br />
-						<a class="btn" href="#swatch-liquids">liquids</a><br />
-						<a class="btn" href="#swatch-npcs">npcs</a><br />
-						<a class="btn" href="#swatch-entities">entities</a><br />
+						<a class="btn btn-small" href="#swatch-blocks"><i class="icon-th-large"></i> <span class="help">Blocks</span></a><br />
+						<a class="btn btn-small" href="#swatch-walls"><i class="icon-th"></i> <span class="help">Walls</span></a><br />
+						<a class="btn btn-small" href="#swatch-liquids"><i class="icon-tint"></i> <span class="help">Liquids</span></a><br />
+						<a class="btn btn-small" href="#swatch-npcs"><i class="icon-user"></i> <span class="help">Npcs</span></a><br />
+						<a class="btn btn-small" href="#swatch-entities"><i class="icon-asterisk"></i> <span class="help">Entities</span></a><br />
+					</div>
+					<div id="swatch-content">
+						<div id="swatch-blocks">loading blocks..</div>
+						<div id="swatch-walls">loading walls..</div>
+						<div id="swatch-liquids">loading liquids..</div>
+						<div id="swatch-npcs">loading npcs..</div>
+						<div id="swatch-entities">loading entities..</div>
 					</div>
 				</div>
 			</div>
